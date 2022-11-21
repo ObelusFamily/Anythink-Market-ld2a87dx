@@ -14,7 +14,7 @@ const user = require("../models/User");
 
 async function seed(){
     for (let i = 0; i < 100; i++) {
-        const user = new User
+        const user = new User()
         user.username = `user${200}${i}`
         user.email = user.username + "@wilco.com"
         user.setPassword = user.username + "password" + i
@@ -31,11 +31,7 @@ async function seed(){
         comment.seller = user
         comment.item = item
         comment.body = i + "comment about"  + item.title 
-        await comment.save()
-
-
-
-        
+        await comment.save()       
     }
 
 }
