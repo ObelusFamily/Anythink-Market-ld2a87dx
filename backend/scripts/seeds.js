@@ -225,7 +225,8 @@ async function createUsers() {
     for (let index = 0; index < 100; index++) {
         if (!User || typeof (User) !== "function") { return }
 
-        const username = "User" + Math.ceil(Math.random() * 10000)
+        const username = "User" + Math.floor(Math.random() * 200000)
+        
         const email = username + "@wilco.com"
         const password = "password" + Math.random() * 10000
         const bio = wordGenerator(30)
