@@ -295,23 +295,16 @@ async function createComments() {
     }
 }
 
-// console.group("run")
+console.group("run")
 
-// console.log("Creating Users \n")
-// createUsers()
+console.log("Creating Users \n")
+createUsers()
 
-// console.log("creating items \n")
-// createItems()
+console.log("creating items \n")
+createItems()
 
-// console.log("creating comments \n")
-// createComments()
-// console.groupEnd("run")
+console.log("creating comments \n")
+createComments()
+console.groupEnd("run")
 
-// let user = new User()
-// console.log("user: \n", user)
-// let item = new Item() 
-// console.log("item: \n", item)
-// let comment = new Comment()
-// console.log("comment: \n", comment)
 
-console.log(wordGenerator(30))
