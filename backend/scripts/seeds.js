@@ -10,7 +10,6 @@ if (mongo) { console.info("server connected") }
 const User = require("../models/User");
 const Item = require("../models/Item");
 const Comments = require("../models/Comment");
-const user = require("../models/User");
 
 async function seed(){
     for (let i = 0; i < 100; i++) {
