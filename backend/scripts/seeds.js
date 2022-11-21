@@ -11,32 +11,7 @@ const User = require("../models/User");
 const Item = require("../models/Item");
 const Comment = require("../models/Comment");
 
-
-// CREATE USERS
-async function createUsers() {
-    for (let index = 0; index < 100; index++) {
-        if (!User || typeof (User) !== "function") { return }
-
-        const username = "User_" + Math.ceil(Math.random() * 1000)
-        const email = username + "@wilco.com"
-        const password = "password" + Math.random() * 10000
-
-
-        const user = new User()
-        user.username = username
-        user.email = email
-        user.password = password
-        user.bio = bio
-
-        console.log("USER: \n", user)
-        await user.save()
-    }
-}
-
-
-//CREATE ITEMS
-
-
+// Generta random words
 const wordGenerator = (num) => {
     const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus ut faucibus pulvinar elementum integer enim. At ultrices mi tempus imperdiet. At risus viverra adipiscing at in tellus. Quam id leo in vitae. Pellentesque habitant morbi tristique senectus et netus. Ipsum nunc aliquet bibendum enim. Malesuada pellentesque elit eget gravida cum sociis natoque. Pharetra magna ac placerat vestibulum lectus mauris. Massa tincidunt dui ut ornare lectus sit amet est. Eu mi bibendum neque egestas congue quisque.
 
@@ -244,6 +219,34 @@ Accumsan lacus vel facilisis volutpat est. Ultrices neque ornare aenean euismod 
     }
     return string
 }
+
+// CREATE USERS
+async function createUsers() {
+    for (let index = 0; index < 100; index++) {
+        if (!User || typeof (User) !== "function") { return }
+
+        const username = "User" + Math.ceil(Math.random() * 10000)
+        const email = username + "@wilco.com"
+        const password = "password" + Math.random() * 10000
+        const bio = wordGenerator(30)
+
+
+        const user = new User()
+        user.username = username
+        user.email = email
+        user.password = password
+        user.bio = bio
+
+        console.log("USER: \n", user)
+        await user.save()
+    }
+}
+
+
+//CREATE ITEMS
+
+
+
 async function createItems() {
     for (let index = 0; index < 100; index++) {
         if (!Item || typeof (Item) !== "function") { return }
@@ -251,7 +254,7 @@ async function createItems() {
         const slug = title + Math.random() * 1000
         const description = wordGenerator(15)
         const sellers = Array.from(User.find({}))
-        const seller = sellers[i]
+        const seller = sellers[index]
 
         const item = new Item()
         if (!item) {
@@ -275,10 +278,10 @@ async function createComments() {
     for (let index = 0; index < 100; index++) {
         const comment = new Comment()
         const sellers = Array.from(await User.find({}))
-        const seller = sellers[i]
+        const seller = sellers[index]
 
         const items = Array.from(await Item.find({}))
-        const item = items[i]
+        const item = items[index]
 
         if (!seller) {
             console.error("No seller for comment")
@@ -303,3 +306,10 @@ createItems()
 console.log("creating comments \n")
 createComments()
 console.groupEnd("run")
+
+// let user = new User()
+// console.log("user: \n", user)
+// let item = new Item() 
+// console.log("item: \n", item)
+// let comment = new Comment()
+// console.log("comment: \n", comment)
