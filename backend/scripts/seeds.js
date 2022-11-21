@@ -29,6 +29,7 @@ async function seed(){
 
         const comment = new Comments()
         comment.seller = user
+        comment.item = item
         comment.body = i + "comment about"  + item.title 
         await comment.save()
 
