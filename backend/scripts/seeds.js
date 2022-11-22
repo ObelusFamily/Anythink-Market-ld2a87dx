@@ -15,7 +15,7 @@ const Item = mongoose.model('Item');
 const Comment = mongoose.model('Comment');
 (async ()=>{
     let index = 1
-    while (index < 100) {
+    while (index < 101) {
         //seed user
         const user = new User()
         user.username = "user" + 6000 + index
