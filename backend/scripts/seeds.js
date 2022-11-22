@@ -36,6 +36,5 @@ const Comment = mongoose.model('Comment');
         comment.item = item
         comment.body = "comment about " + item.title +  " :)"
         await comment.save()
-
         index++
 }})()
