@@ -2,14 +2,13 @@
 const mongoose = require('mongoose')
 
 mongoose.connect(process.env.MONGODB_URI);
-if (isProduction) {
-} else {
-  mongoose.set("debug", true);
-}
 
-require("./models/User");
-require("./models/Item");
-require("./models/Comment");
+mongoose.set("debug", true);
+
+
+require("../models/User");
+require("../models/Item");
+require("../models/Comment");
 
 const User = mongoose.model('User');
 const Item = mongoose.model('Item');
@@ -19,7 +18,7 @@ const Comment = mongoose.model('Comment');
     while (index < 100) {
         //seed user
         const user = new User()
-        user.username = "user" + 20 + index
+        user.username = "user" + 6000 + index
         user.email = user.username + "@wilco.com"
         user.setPassword = user.email + index
         await user.save()
@@ -36,4 +35,6 @@ const Comment = mongoose.model('Comment');
         comment.item = item
         comment.body = "comment about " + item.title +  " :)"
         await comment.save()
+
+        index++
 }})()
