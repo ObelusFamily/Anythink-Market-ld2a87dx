@@ -26,7 +26,7 @@ const Comment = mongoose.model('Comment');
         //seed items
         const item = new Item()
         item.title = "item" + index
-        item.slug = item.title + (Math.random() + (index * 100))
+        item.slug = item.title + (Math.random() * 100) + index
         item.description = "description" + " " + item.title + " " + index 
         item.seller = user
         await item.save()
