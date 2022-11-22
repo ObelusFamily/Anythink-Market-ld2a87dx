@@ -15,6 +15,9 @@ require("../models/Comment");
 const User = mongoose.model('User');
 const Item = mongoose.model('Item');
 const Comment = mongoose.model('Comment');
+
+//seed database
+
 (async ()=>{
     let index = 0
     while (index < 101) {
@@ -40,3 +43,4 @@ const Comment = mongoose.model('Comment');
         await comment.save()
         index++
 }})()
+
