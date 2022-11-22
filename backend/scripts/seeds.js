@@ -43,6 +43,6 @@ const Comment = mongoose.model('Comment');
         await comment.save()
         index++
 }
-await mongoose.close()
+await mongoose.connection.close()
 
 })()
