@@ -42,5 +42,7 @@ const Comment = mongoose.model('Comment');
         comment.body = "comment about " + item.title +  " :)"
         await comment.save()
         index++
-}})()
+}
 await mongoose.close()
+
+})()
